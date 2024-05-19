@@ -17,11 +17,14 @@ import { FormSessaoComponent } from './shared/components/form-sessao/form-sessao
 import { FormSalaComponent } from './shared/components/form-sala/form-sala.component';
 import { FilmeComponent } from './features/filme/filme.component';
 import { HttpClientModule } from '@angular/common/http';
+import { FilmeDetalheComponent } from './features/filme-detalhe/filme-detalhe.component';
 
 const routes: Routes = [
   { path: '', component: IndexComponent },
   { path: 'index', component: IndexComponent },
   { path: 'sala-cinema', component: SalaCinemaComponent },
+  { path: 'filme', component: FilmeComponent},
+  { path: 'filme/:nome', component: FilmeDetalheComponent},
 ];
 
 @NgModule({
@@ -35,6 +38,7 @@ const routes: Routes = [
     FormSessaoComponent,
     FormSalaComponent,
     FilmeComponent,
+    FilmeDetalheComponent,
   ],
   imports: [
     BrowserModule,

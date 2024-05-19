@@ -1,0 +1,59 @@
+clr-card {
+  margin: 2rem auto;
+  max-width: 600px;
+}
+
+clr-card-img {
+  max-height: 400px;
+  object-fit: cover;
+}
+
+clr-card-block p {
+  margin-bottom: 0.5rem;
+}
+
+
+.clr-row {
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.card {
+  max-width: 100%;
+}
+
+.card-img img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.card-info {
+  background-color: #fff;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-info h2 {
+  margin-bottom: 1rem;
+}
+
+.card-info p {
+  margin-bottom: 0.5rem;
+}
+
+.card-info button {
+  margin-top: 1rem;
+}
+
+.modal-icons {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 10px;
+  margin-right: 20px;
+}
+
+.modal-icons cds-icon {
+  margin-left: 10px;
+}

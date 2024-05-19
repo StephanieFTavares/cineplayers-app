@@ -2,11 +2,11 @@
   <div class="branding">
     <a href="javascript:void(0)">
       <cds-icon shape="vm-bug"></cds-icon>
-      <span class="title">CinePlayers</span>
+      <span routerLink="" class="title">CinePlayers</span>
     </a>
   </div>
   <div class="header-nav">
-    <a href="javascript://" class="nav-link nav-icon">
+    <a routerLink="/filme" class="nav-link nav-icon">
       Filmes
     </a>
     <a href="javascript://" class="active nav-link nav-icon">
@@ -21,9 +21,20 @@
       <input id="search-input-sidenav-ng" type="text" placeholder="Search for keywords..." />
     </label>
   </form>
-  <div class="settings">
-    <a href="javascript://" class="nav-link nav-icon">
-      <cds-icon shape="cloud"></cds-icon>
-    </a>
+  <div class="settings custom-dropdown-margin">
+    <clr-dropdown [clrCloseMenuOnItemClick]="false">
+      <button clrDropdownTrigger aria-label="Dropdown demo button">
+        USER
+        <cds-icon shape="angle" direction="down"></cds-icon>
+      </button>
+      <clr-dropdown-menu *clrIfOpen>
+        <label class="dropdown-header" aria-hidden="true">Dropdown header</label>
+        <div aria-label="Dropdown header Action 1" clrDropdownItem>Action 1</div>
+        <div aria-label="Dropdown header Action 2" clrDropdownItem>Action 2</div>
+        <div class="dropdown-divider" role="separator" aria-hidden="true"></div>
+        <div clrDropdownItem>Link 1</div>
+        <div clrDropdownItem>Link 2</div>
+      </clr-dropdown-menu>
+    </clr-dropdown>
   </div>
 </header>

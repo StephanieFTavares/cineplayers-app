@@ -19,6 +19,12 @@ export class FilmeService {
     );
   }
 
+  getFilmeByName(nome: string): Observable<Filme> {
+    return this.http.get<Response>(`${this.apiUrl}/${encodeURIComponent(nome)}`).pipe(
+      map(response => this.transformToFilme(response.data))
+    );
+  }
+
   private transformToFilme(data: any): Filme {
     return {
       id: data.id,

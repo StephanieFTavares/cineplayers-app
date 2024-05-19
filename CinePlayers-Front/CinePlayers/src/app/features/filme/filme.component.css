@@ -3,3 +3,13 @@
   max-height: 200px; /* Defina a altura máxima da imagem */
   object-fit: cover; /* Garante que a imagem cubra toda a área sem distorção */
 }
+
+.modal-icons {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 10px;
+}
+
+.modal-icons cds-icon {
+  margin-left: 10px;
+}

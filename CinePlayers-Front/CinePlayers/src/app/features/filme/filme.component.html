@@ -1,5 +1,5 @@
 <div class="clr-row">
-  <div class="clr-col-lg-3 clr-col-12" *ngFor="let filme of filmes">
+  <div class="clr-col-lg-3 clr-col-12" *ngFor="let filme of filmes" (click)="openModal(filme)">
     <a href="javascript://" class="card clickable">
       <div class="card-img">
         <img
@@ -11,3 +11,22 @@
     <h4>{{ filme.nome }}</h4>
   </div>
 </div>
+
+<clr-modal [(clrModalOpen)]="modalOpen">
+  <h3 class="modal-title">{{ selectedFilme?.nome }}</h3>
+  <div class="modal-body">
+    <p><strong>Duração:</strong> {{ selectedFilme?.duracao }}</p>
+    <p><strong>Ano de Lançamento:</strong> {{ selectedFilme?.anoDeLancamento | date }}</p>
+    <p><strong>Nota dos Críticos:</strong> {{ selectedFilme?.avaliacaoDosCriticos }}</p>
+    <p><strong>Avaliação dos Usuários:</strong> {{ selectedFilme?.avaliacaoDosUsuarios }}%</p>
+
+    <div class="modal-icons">
+      <cds-icon shape="cloud" class="ml-2"></cds-icon>
+      <cds-icon shape="cloud" class="ml-2"></cds-icon>
+      <cds-icon shape="cloud" class="ml-2"></cds-icon>
+    </div>
+
+    <br>
+    <button class="btn btn-sm" (click)="goToDetails(selectedFilme?.nome)">SAIBA MAIS</button>
+  </div>
+</clr-modal>
