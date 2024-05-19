@@ -12,6 +12,11 @@ import { SalaCinemaComponent } from './features/sala-cinema/sala-cinema.componen
 import { FormUsuarioComponent } from './shared/components/form-usuario/form-usuario.component';
 import { NgxMaskModule, IConfig } from 'ngx-mask';
 import { NavbarComponent } from './shared/components/navbar/navbar.component';
+import { FormFilmeComponent } from './shared/components/form-filme/form-filme.component';
+import { FormSessaoComponent } from './shared/components/form-sessao/form-sessao.component';
+import { FormSalaComponent } from './shared/components/form-sala/form-sala.component';
+import { FilmeComponent } from './features/filme/filme.component';
+import { HttpClientModule } from '@angular/common/http';
 
 const routes: Routes = [
   { path: '', component: IndexComponent },
@@ -26,12 +31,17 @@ const routes: Routes = [
     SalaCinemaComponent,
     FormUsuarioComponent,
     NavbarComponent,
+    FormFilmeComponent,
+    FormSessaoComponent,
+    FormSalaComponent,
+    FilmeComponent,
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     ClarityModule,
     NgxMaskModule.forRoot(),
+    HttpClientModule,
     RouterModule.forRoot(routes)
   ],
   providers: [],

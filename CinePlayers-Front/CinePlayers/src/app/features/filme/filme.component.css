@@ -1,0 +1,5 @@
+.card-img img {
+  max-width: 30px; /* Defina a largura máxima da imagem */
+  max-height: 200px; /* Defina a altura máxima da imagem */
+  object-fit: cover; /* Garante que a imagem cubra toda a área sem distorção */
+}
