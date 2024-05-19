@@ -1,0 +1,30 @@
+<form clrForm>
+  <clr-input-container>
+    <label>Nome:</label>
+    <input clrInput type="text" name="nome" />
+  </clr-input-container>
+  <clr-input-container>
+    <label>Email:</label>
+    <input clrInput type="text" name="email" />
+  </clr-input-container>
+  <clr-password-container>
+    <label>Senha:</label>
+    <input
+      clrPassword
+      autocomplete="current-password"
+      placeholder="Password please!"
+      name="senha"
+    />
+  </clr-password-container>
+  <clr-input-container>
+    <label>CPF:</label>
+    <input clrInput type="text" name="cpf" mask="000.000.000-00" />
+  </clr-input-container>
+  <clr-select-container>
+    <label>Credencial</label>
+    <select clrSelect name="type">
+      <option value="local">Usuário</option>
+      <option value="admin">Crítico</option>
+    </select>
+  </clr-select-container>
+</form>
