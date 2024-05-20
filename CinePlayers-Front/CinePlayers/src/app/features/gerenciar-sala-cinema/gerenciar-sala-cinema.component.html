@@ -1,0 +1,35 @@
+<div class="sala-cinema-list-container">
+  <button class="btn btn-primary mb-4" (click)="openCreateModal()">Criar Nova Sala de Cinema</button>
+  <clr-datagrid>
+    <clr-dg-column>Nome</clr-dg-column>
+    <clr-dg-column>Capacidade</clr-dg-column>
+    <clr-dg-column>Ações</clr-dg-column>
+
+    <clr-dg-row *clrDgItems="let sala of salas">
+      <clr-dg-cell>{{ sala.nome }}</clr-dg-cell>
+      <clr-dg-cell>{{ sala.capacidade }}</clr-dg-cell>
+      <clr-dg-cell>
+        <div class="action-buttons">
+          <button class="btn btn-sm btn-warning" (click)="openEditModal(sala)">Alterar</button>
+          <button class="btn btn-sm btn-danger" (click)="deleteSala(sala.id)">Excluir</button>
+        </div>
+      </clr-dg-cell>
+    </clr-dg-row>
+
+    <clr-dg-footer>{{ salas.length }} salas de cinema</clr-dg-footer>
+  </clr-datagrid>
+
+  <!-- Create/Edit Modal -->
+  <clr-modal [(clrModalOpen)]="isModalOpen">
+    <h3 class="modal-title">{{ isEditing ? 'Editar Sala de Cinema' : 'Criar Nova Sala de Cinema' }}</h3>
+    <div class="modal-body">
+      <form [formGroup]="currentSalaForm" (ngSubmit)="isEditing ? updateSala() : createSala()">
+        <app-form-sala [salaForm]="currentSalaForm"></app-form-sala>
+        <div class="modal-buttons">
+          <button type="submit" class="btn btn-primary">{{ isEditing ? 'Salvar Alterações' : 'Criar Sala' }}</button>
+          <button type="button" class="btn btn-secondary" (click)="closeModal()">Cancelar</button>
+        </div>
+      </form>
+    </div>
+  </clr-modal>
+</div>

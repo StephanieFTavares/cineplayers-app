@@ -1,15 +1,12 @@
-<form clrForm>
+<form clrForm [formGroup]="salaForm" class="form-centered">
   <clr-input-container>
     <label>Nome da sala</label>
-    <input clrInput type="text" name="sala" placeholder="Sala1" />
+    <input clrInput type="text" formControlName="nome" placeholder="Sala1" />
   </clr-input-container>
 
   <clr-input-container>
     <label>Capacidade</label>
-    <input clrInput type="number" name="capacidade" placeholder="0" />
+    <input clrInput type="number" formControlName="capacidade" placeholder="0" />
   </clr-input-container>
-
   <br>
-  <button clrButton type="submit" class="btn btn-primary">Salvar</button>
-  <button clrButton type="button" class="btn btn-outline">Cancelar</button>
 </form>

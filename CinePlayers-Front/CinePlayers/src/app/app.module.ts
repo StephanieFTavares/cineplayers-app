@@ -8,7 +8,6 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { IndexComponent } from './features/index/index.component';
-import { SalaCinemaComponent } from './features/sala-cinema/sala-cinema.component';
 import { FormUsuarioComponent } from './shared/components/form-usuario/form-usuario.component';
 import { NgxMaskModule, IConfig } from 'ngx-mask';
 import { NavbarComponent } from './shared/components/navbar/navbar.component';
@@ -20,21 +19,21 @@ import { HttpClientModule } from '@angular/common/http';
 import { FilmeDetalheComponent } from './features/filme-detalhe/filme-detalhe.component';
 import { GerenciarFilmeComponent } from './features/gerenciar-filme/gerenciar-filme.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { GerenciarSalaCinemaComponent } from './features/gerenciar-sala-cinema/gerenciar-sala-cinema.component';
 
 const routes: Routes = [
   { path: '', component: IndexComponent },
   { path: 'index', component: IndexComponent },
-  { path: 'sala-cinema', component: SalaCinemaComponent },
   { path: 'filme', component: FilmeComponent},
   { path: 'filme/:nome', component: FilmeDetalheComponent},
   { path: 'gerenciar-filme', component: GerenciarFilmeComponent},
+  { path: 'gerenciar-sala', component: GerenciarSalaCinemaComponent},
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
     IndexComponent,
-    SalaCinemaComponent,
     FormUsuarioComponent,
     NavbarComponent,
     FormFilmeComponent,
@@ -43,6 +42,7 @@ const routes: Routes = [
     FilmeComponent,
     FilmeDetalheComponent,
     GerenciarFilmeComponent,
+    GerenciarSalaCinemaComponent,
   ],
   imports: [
     BrowserModule,
