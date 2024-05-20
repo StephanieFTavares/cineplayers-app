@@ -1,34 +1,31 @@
-<form clrForm>
+<form clrForm [formGroup]="filmeForm" class="form-centered">
   <clr-input-container>
     <label>Nome</label>
-    <input clrInput type="text" name="nome" placeholder="Informe o nome do filme" />
+    <input clrInput type="text" formControlName="nome" placeholder="Informe o nome do filme" />
   </clr-input-container>
 
   <clr-input-container>
     <label>Diretor</label>
-    <input clrInput type="text" name="diretor" placeholder="Nome do diretor" />
+    <input clrInput type="text" formControlName="diretor" placeholder="Nome do diretor" />
   </clr-input-container>
 
   <clr-input-container>
     <label>Ano de Lançamento</label>
-    <input clrInput type="number" name="anoLancamento" placeholder="0" />
+    <input clrInput type="text" formControlName="anoDeLancamento" placeholder="0" />
   </clr-input-container>
 
   <clr-input-container>
     <label>Duração</label>
-    <input clrInput type="number" name="duracao" placeholder="0" />
+    <input clrInput type="text" formControlName="duracao" placeholder="0" />
   </clr-input-container>
 
   <clr-textarea-container>
     <label>Sinopse</label>
-    <textarea clrTextarea name="sinopse" placeholder="Digite um breve resumo sobre o filme"></textarea>
+    <textarea clrTextarea formControlName="sinopse" placeholder="Digite um breve resumo sobre o filme"></textarea>
   </clr-textarea-container>
 
   <clr-textarea-container>
     <label>Elenco</label>
-    <textarea clrTextarea name="elenco" placeholder="Informe os principais atores"></textarea>
+    <textarea clrTextarea formControlName="elenco" placeholder="Informe os principais atores"></textarea>
   </clr-textarea-container>
-
-  <button clrButton type="submit" class="btn btn-primary ml-2">Salvar</button>
-  <button clrButton type="button" class="btn btn-outline">Cancelar</button>
 </form>

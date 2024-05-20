@@ -1,0 +1,22 @@
+.form-centered {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+clr-input-container,
+clr-textarea-container {
+  width: 100%;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+}
+
+
+
+clr-input-container input,
+clr-textarea-container textarea {
+  flex: 1; /* O input ocupa o restante do espaço */
+}

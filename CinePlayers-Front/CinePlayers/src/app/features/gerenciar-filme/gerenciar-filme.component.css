@@ -1,0 +1,14 @@
+.movie-list-container {
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+clr-datagrid {
+  width: 100%;
+}
+
+.action-buttons {
+  display: flex;
+}
+

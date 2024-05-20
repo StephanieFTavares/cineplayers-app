@@ -2,6 +2,7 @@
   max-width: 30px; /* Defina a largura máxima da imagem */
   max-height: 200px; /* Defina a altura máxima da imagem */
   object-fit: cover; /* Garante que a imagem cubra toda a área sem distorção */
+  border-radius: 8px; /* Adiciona cantos arredondados */
 }
 
 .modal-icons {
@@ -12,4 +13,13 @@
 
 .modal-icons cds-icon {
   margin-left: 10px;
+}
+
+.clr-row {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+h2 {
+  margin-left: 30px;
 }

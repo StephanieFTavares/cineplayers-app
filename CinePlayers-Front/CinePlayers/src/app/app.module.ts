@@ -18,6 +18,8 @@ import { FormSalaComponent } from './shared/components/form-sala/form-sala.compo
 import { FilmeComponent } from './features/filme/filme.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FilmeDetalheComponent } from './features/filme-detalhe/filme-detalhe.component';
+import { GerenciarFilmeComponent } from './features/gerenciar-filme/gerenciar-filme.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 const routes: Routes = [
   { path: '', component: IndexComponent },
@@ -25,6 +27,7 @@ const routes: Routes = [
   { path: 'sala-cinema', component: SalaCinemaComponent },
   { path: 'filme', component: FilmeComponent},
   { path: 'filme/:nome', component: FilmeDetalheComponent},
+  { path: 'gerenciar-filme', component: GerenciarFilmeComponent},
 ];
 
 @NgModule({
@@ -39,6 +42,7 @@ const routes: Routes = [
     FormSalaComponent,
     FilmeComponent,
     FilmeDetalheComponent,
+    GerenciarFilmeComponent,
   ],
   imports: [
     BrowserModule,
@@ -46,6 +50,8 @@ const routes: Routes = [
     ClarityModule,
     NgxMaskModule.forRoot(),
     HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
     RouterModule.forRoot(routes)
   ],
   providers: [],

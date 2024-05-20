@@ -1,0 +1,45 @@
+<div class="movie-list-container">
+  <button class="btn btn-primary mb-4" (click)="openCreateModal()">Criar Novo Filme</button>
+  <clr-datagrid>
+    <clr-dg-column>Nome</clr-dg-column>
+    <clr-dg-column>Elenco</clr-dg-column>
+    <clr-dg-column>Diretor</clr-dg-column>
+    <clr-dg-column>Duração</clr-dg-column>
+    <clr-dg-column>Ano de Lançamento</clr-dg-column>
+    <clr-dg-column>Sinopse</clr-dg-column>
+    <clr-dg-column>Nota dos Críticos</clr-dg-column>
+    <clr-dg-column>Avaliação dos Usuários</clr-dg-column>
+    <clr-dg-column>Ações</clr-dg-column>
+
+    <clr-dg-row *clrDgItems="let filme of filmes">
+      <clr-dg-cell>{{ filme.nome }}</clr-dg-cell>
+      <clr-dg-cell>{{ filme.elenco }}</clr-dg-cell>
+      <clr-dg-cell>{{ filme.diretor }}</clr-dg-cell>
+      <clr-dg-cell>{{ filme.duracao }}</clr-dg-cell>
+      <clr-dg-cell>{{ filme.anoDeLancamento | date: 'yyyy' }}</clr-dg-cell>
+      <clr-dg-cell>{{ filme.sinopse }}</clr-dg-cell>
+      <clr-dg-cell>{{ filme.avaliacaoDosCriticos }}</clr-dg-cell>
+      <clr-dg-cell>{{ filme.avaliacaoDosUsuarios }}%</clr-dg-cell>
+      <clr-dg-cell>
+        <div class="action-buttons">
+          <button class="btn btn-sm btn-warning" (click)="openEditModal(filme)">Alterar</button>
+          <button class="btn btn-sm btn-danger" (click)="deleteFilme(filme.id)">Excluir</button>
+        </div>
+      </clr-dg-cell>
+    </clr-dg-row>
+
+    <clr-dg-footer>{{ filmes.length }} filmes</clr-dg-footer>
+  </clr-datagrid>
+
+  <!-- Create/Edit Modal -->
+  <clr-modal [(clrModalOpen)]="isModalOpen">
+    <h3 class="modal-title">{{ isEditing ? 'Editar Filme' : 'Criar Novo Filme' }}</h3>
+    <div class="modal-body">
+      <form (ngSubmit)="isEditing ? updateFilme() : createFilme()">
+        <app-form-filme [filmeForm]="currentFilmeForm"></app-form-filme>
+        <button type="submit" class="btn btn-primary">{{ isEditing ? 'Salvar Alterações' : 'Criar Filme' }}</button>
+        <button type="button" class="btn btn-secondary" (click)="closeModal()">Cancelar</button>
+      </form>
+    </div>
+  </clr-modal>
+</div>
