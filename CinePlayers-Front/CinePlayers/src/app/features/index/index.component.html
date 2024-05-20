@@ -1,1 +1,49 @@
+<div class="carousel-container">
+  <!-- Destaque da Semana -->
+  <h2>Destaque da Semana</h2>
+  <div class="carousel" id="featuredCarousel">
+    <button class="carousel-control prev" (click)="prevSlide('featuredCarousel')">&lt;</button>
+    <div class="carousel-inner">
+      <div class="carousel-item" *ngFor="let movie of featuredMovies">
+        <div class="movie-card">
+          <img [src]="movie.image" alt="{{ movie.title }}">
+          <div class="movie-title">{{ movie.title }}</div>
+          <button class="btn btn-sm">SAIBA MAIS</button>
+        </div>
+      </div>
+    </div>
+    <button class="carousel-control next" (click)="nextSlide('featuredCarousel')">&gt;</button>
+  </div>
 
+  <!-- Mais Curtidos da Semana -->
+  <h2>Mais Curtidos da Semana</h2>
+  <div class="carousel" id="mostLikedCarousel">
+    <button class="carousel-control prev" (click)="prevSlide('mostLikedCarousel')">&lt;</button>
+    <div class="carousel-inner">
+      <div class="carousel-item" *ngFor="let movie of mostLikedMovies">
+        <div class="movie-card">
+          <img [src]="movie.image" alt="{{ movie.title }}">
+          <div class="movie-title">{{ movie.title }}</div>
+          <button class="btn btn-sm">SAIBA MAIS</button>
+        </div>
+      </div>
+    </div>
+    <button class="carousel-control next" (click)="nextSlide('mostLikedCarousel')">&gt;</button>
+  </div>
+
+  <!-- Últimos Lançamentos -->
+  <h2>Últimos Lançamentos</h2>
+  <div class="carousel" id="latestReleasesCarousel">
+    <button class="carousel-control prev" (click)="prevSlide('latestReleasesCarousel')">&lt;</button>
+    <div class="carousel-inner">
+      <div class="carousel-item" *ngFor="let movie of latestReleases">
+        <div class="movie-card">
+          <img [src]="movie.image" alt="{{ movie.title }}">
+          <div class="movie-title">{{ movie.title }}</div>
+          <button class="btn btn-sm">SAIBA MAIS</button>
+        </div>
+      </div>
+    </div>
+    <button class="carousel-control next" (click)="nextSlide('latestReleasesCarousel')">&gt;</button>
+  </div>
+</div>
