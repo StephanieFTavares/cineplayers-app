@@ -40,5 +40,10 @@
         <div clrDropdownItem>Gerenciar Sessão</div>
       </clr-dropdown-menu>
     </clr-dropdown>
+    <button class="btn btn-secondary" id="btn-theme" (click)="toggleTheme()">
+      <i [ngClass]="isDarkTheme ? 'fas fa-sun' : 'fas fa-moon'">
+        {{ isDarkTheme ? ' Light' : ' Dark' }}
+      </i>
+    </button>
   </div>
 </header>

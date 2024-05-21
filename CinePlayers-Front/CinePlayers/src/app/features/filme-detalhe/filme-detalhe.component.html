@@ -1,7 +1,7 @@
 <div class="movie-detail-container" *ngIf="filme">
   <div class="movie-header" [style.backgroundImage]="'url(' + filme.imagem + ')'">
     <div class="overlay">
-      <h1>{{ filme.nome }}</h1>
+      <h1 class="movie-title">{{ filme.nome }}</h1>
       <button class="btn btn-sm" (click)="goBack()">Voltar</button>
     </div>
   </div>

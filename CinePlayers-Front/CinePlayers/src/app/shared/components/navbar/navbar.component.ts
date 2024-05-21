@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Renderer2 } from '@angular/core';
 import { SearchService } from 'src/app/core/services/search.service';
 
 @Component({
@@ -9,10 +9,26 @@ import { SearchService } from 'src/app/core/services/search.service';
 
 export class NavbarComponent {
   searchTerm: string = '';
+  isDarkTheme: boolean = true;
 
-  constructor(private searchService: SearchService) {}
+  constructor(private searchService: SearchService, private renderer: Renderer2) {
+    this.updateTheme();
+  }
 
   onSearch() {
     this.searchService.updateSearchTerm(this.searchTerm);
+  }
+
+  toggleTheme() {
+    this.isDarkTheme = !this.isDarkTheme;
+    this.updateTheme();
+  }
+
+  updateTheme() {
+    if (this.isDarkTheme) {
+      this.renderer.setAttribute(document.body, 'cds-theme', 'dark');
+    } else {
+      this.renderer.setAttribute(document.body, 'cds-theme', 'light');
+    }
   }
 }
