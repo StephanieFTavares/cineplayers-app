@@ -25,6 +25,7 @@ export class GerenciarFilmeComponent {
   ngOnInit() {
     this.filmeService.getFilmes().subscribe((data: Filme[]) => {
       this.filmes = data;
+      console.log(this.filmes)
       this.filteredFilmes = data;
     });
 
@@ -44,7 +45,8 @@ export class GerenciarFilmeComponent {
       filme.anoDeLancamento.getFullYear().toString().includes(term) ||
       filme.sinopse.toLowerCase().includes(term.toLowerCase()) ||
       filme.avaliacaoDosCriticos.toString().includes(term) ||
-      filme.avaliacaoDosUsuarios.toString().includes(term)
+      filme.avaliacaoDosUsuarios.toString().includes(term) ||
+      filme.categoria.toLowerCase().includes(term.toLowerCase())
     );
   }
 
@@ -74,7 +76,9 @@ export class GerenciarFilmeComponent {
       usuariosQueFavoritaram: [],
       usuariosQueReagiram: [],
       usuariosQueAvaliaram: null,
-      sessoes: []
+      sessoes: [],
+      categoria: '',
+      imagem: '',
     };
   }
 

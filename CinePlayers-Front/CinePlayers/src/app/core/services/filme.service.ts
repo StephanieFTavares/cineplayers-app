@@ -40,7 +40,9 @@ export class FilmeService {
       usuariosQueFavoritaram: data.usuariosQueFavoritaram,
       usuariosQueReagiram: data.usuariosQueReagiram,
       usuariosQueAvaliaram: data.usuariosQueAvaliaram,
-      sessoes: data.sessoes
+      sessoes: data.sessoes,
+      categoria: data.categoria,
+      imagem: data.imagem,
     };
   }
 }

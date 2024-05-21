@@ -13,4 +13,6 @@ export interface Filme {
   usuariosQueReagiram: any[];
   usuariosQueAvaliaram: any[] | null;
   sessoes: any[];
+  categoria: string;
+  imagem: string;
 }

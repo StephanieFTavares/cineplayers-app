@@ -9,6 +9,7 @@
     <clr-dg-column>Sinopse</clr-dg-column>
     <clr-dg-column>Nota dos Críticos</clr-dg-column>
     <clr-dg-column>Avaliação dos Usuários</clr-dg-column>
+    <clr-dg-column>Categoria</clr-dg-column>
     <clr-dg-column>Ações</clr-dg-column>
 
     <clr-dg-row *clrDgItems="let filme of filteredFilmes">
@@ -20,6 +21,7 @@
       <clr-dg-cell>{{ filme.sinopse }}</clr-dg-cell>
       <clr-dg-cell>{{ filme.avaliacaoDosCriticos }}</clr-dg-cell>
       <clr-dg-cell>{{ filme.avaliacaoDosUsuarios }}%</clr-dg-cell>
+      <clr-dg-cell>{{ filme.categoria }}</clr-dg-cell>
       <clr-dg-cell>
         <div class="action-buttons">
           <button class="btn btn-sm btn-warning" (click)="openEditModal(filme)">Alterar</button>
