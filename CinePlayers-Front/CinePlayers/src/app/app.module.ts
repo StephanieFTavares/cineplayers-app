@@ -21,6 +21,7 @@ import { GerenciarFilmeComponent } from './features/gerenciar-filme/gerenciar-fi
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { GerenciarSalaCinemaComponent } from './features/gerenciar-sala-cinema/gerenciar-sala-cinema.component';
 import { LimitPipe } from './shared/pipes/limit.pipe';
+import { FooterComponent } from './shared/components/footer/footer.component';
 
 const routes: Routes = [
   { path: '', component: IndexComponent },
@@ -45,6 +46,7 @@ const routes: Routes = [
     GerenciarFilmeComponent,
     GerenciarSalaCinemaComponent,
     LimitPipe,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
