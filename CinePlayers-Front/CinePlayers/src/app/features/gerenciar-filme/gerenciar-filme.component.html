@@ -11,7 +11,7 @@
     <clr-dg-column>Avaliação dos Usuários</clr-dg-column>
     <clr-dg-column>Ações</clr-dg-column>
 
-    <clr-dg-row *clrDgItems="let filme of filmes">
+    <clr-dg-row *clrDgItems="let filme of filteredFilmes">
       <clr-dg-cell>{{ filme.nome }}</clr-dg-cell>
       <clr-dg-cell>{{ filme.elenco }}</clr-dg-cell>
       <clr-dg-cell>{{ filme.diretor }}</clr-dg-cell>

@@ -5,7 +5,7 @@
     <clr-dg-column>Capacidade</clr-dg-column>
     <clr-dg-column>Ações</clr-dg-column>
 
-    <clr-dg-row *clrDgItems="let sala of salas">
+    <clr-dg-row *clrDgItems="let sala of filteredSalas">
       <clr-dg-cell>{{ sala.nome }}</clr-dg-cell>
       <clr-dg-cell>{{ sala.capacidade }}</clr-dg-cell>
       <clr-dg-cell>

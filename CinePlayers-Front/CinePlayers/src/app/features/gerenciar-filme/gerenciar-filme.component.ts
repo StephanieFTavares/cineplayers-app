@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Filme } from 'src/app/core/models/filme.model';
 import { FilmeService } from 'src/app/core/services/filme.service';
+import { SearchService } from 'src/app/core/services/search.service';
 
 @Component({
   selector: 'app-gerenciar-filme',
@@ -10,20 +11,41 @@ import { FilmeService } from 'src/app/core/services/filme.service';
 })
 export class GerenciarFilmeComponent {
   filmes: Filme[] = [];
+  filteredFilmes: Filme[] = [];
   isModalOpen = false;
   isEditing = false;
   currentFilmeForm!: FormGroup;
 
   constructor(
     private fb: FormBuilder,
-    private filmeService: FilmeService
+    private filmeService: FilmeService,
+    private searchService: SearchService
   ) {}
 
   ngOnInit() {
     this.filmeService.getFilmes().subscribe((data: Filme[]) => {
       this.filmes = data;
+      this.filteredFilmes = data;
     });
+
+    this.searchService.currentSearchTerm.subscribe(term => {
+      this.filteredFilmes = this.filterFilmes(term);
+    });
+
     this.initializeFilmeForm();
+  }
+
+  filterFilmes(term: string): Filme[] {
+    return this.filmes.filter(filme =>
+      filme.nome.toLowerCase().includes(term.toLowerCase()) ||
+      filme.elenco.toLowerCase().includes(term.toLowerCase()) ||
+      filme.diretor.toLowerCase().includes(term.toLowerCase()) ||
+      filme.duracao.toLowerCase().includes(term.toLowerCase()) ||
+      filme.anoDeLancamento.getFullYear().toString().includes(term) ||
+      filme.sinopse.toLowerCase().includes(term.toLowerCase()) ||
+      filme.avaliacaoDosCriticos.toString().includes(term) ||
+      filme.avaliacaoDosUsuarios.toString().includes(term)
+    );
   }
 
   initializeFilmeForm(filme: Filme = this.initializeFilme()): void {

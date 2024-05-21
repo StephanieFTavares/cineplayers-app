@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SalaCinema } from 'src/app/core/models/sala-cinema';
 import { SalaCinemaService } from 'src/app/core/services/sala-cinema.service';
+import { SearchService } from 'src/app/core/services/search.service';
 
 @Component({
   selector: 'app-gerenciar-sala-cinema',
@@ -10,13 +11,15 @@ import { SalaCinemaService } from 'src/app/core/services/sala-cinema.service';
 })
 export class GerenciarSalaCinemaComponent {
   salas: SalaCinema[] = [];
+  filteredSalas: SalaCinema[] = [];
   isModalOpen = false;
   isEditing = false;
   currentSalaForm: FormGroup;
 
   constructor(
     private salaCinemaService: SalaCinemaService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private searchService: SearchService
   ) {
     this.currentSalaForm = this.fb.group({
       id: [''],
@@ -27,9 +30,20 @@ export class GerenciarSalaCinemaComponent {
   }
 
   ngOnInit(): void {
-    this.salaCinemaService.getSalasCinema().subscribe(
-      (salas) => this.salas = salas,
-      (error) => console.error('Erro ao buscar salas de cinema:', error)
+    this.salaCinemaService.getSalasCinema().subscribe((data: SalaCinema[]) => {
+      this.salas = data;
+      this.filteredSalas = data;
+    });
+
+    this.searchService.currentSearchTerm.subscribe(term => {
+      this.filteredSalas = this.filterSalas(term);
+    });
+  }
+
+  filterSalas(term: string): SalaCinema[] {
+    return this.salas.filter(sala =>
+      sala.nome.toLowerCase().includes(term.toLowerCase()) ||
+      sala.capacidade.toString().toLowerCase().includes(term)
     );
   }
 

@@ -16,9 +16,9 @@
       Em Cartaz
     </a>
   </div>
-  <form class="search">
+  <form class="search" (ngSubmit)="onSearch()">
     <label for="search-input-sidenav-ng">
-      <input id="search-input-sidenav-ng" type="text" placeholder="Search for keywords..." />
+      <input id="search-input-sidenav-ng" type="text" placeholder="Pesquise palavras-chave..." [(ngModel)]="searchTerm" name="searchTerm" />
     </label>
   </form>
   <div class="settings custom-dropdown-margin">

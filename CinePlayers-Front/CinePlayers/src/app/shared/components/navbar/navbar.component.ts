@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { SearchService } from 'src/app/core/services/search.service';
 
 @Component({
   selector: 'app-navbar',
@@ -7,4 +8,11 @@ import { Component } from '@angular/core';
 })
 
 export class NavbarComponent {
+  searchTerm: string = '';
+
+  constructor(private searchService: SearchService) {}
+
+  onSearch() {
+    this.searchService.updateSearchTerm(this.searchTerm);
+  }
 }
