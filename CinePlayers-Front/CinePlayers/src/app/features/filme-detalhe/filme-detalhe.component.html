@@ -1,34 +1,33 @@
-<div class="clr-row clr-justify-content-center">
-  <div>
-    <div class="card">
-      <div class="card-img">
-        <img src="https://t.ctcdn.com.br/tVW4FExOvyqJxDqrLxPKJAbAwVc=/640x360/smart/i348994.jpeg"
-          alt="{{ filme?.nome }} Image" class="img-fluid">
-      </div>
+<div class="movie-detail-container" *ngIf="filme">
+  <div class="movie-header" [style.backgroundImage]="'url(' + filme.imagem + ')'">
+    <div class="overlay">
+      <h1>{{ filme.nome }}</h1>
+      <button class="btn btn-sm" (click)="goBack()">Voltar</button>
     </div>
-    <div class="card mt-4 text-center">
-      <h2>{{ filme?.nome }}</h2>
-      <p><strong>Elenco:</strong> {{ filme?.elenco }}</p>
-      <p><strong>Diretor:</strong> {{ filme?.diretor }}</p>
-      <p><strong>Duração:</strong> {{ filme?.duracao }}</p>
-      <p><strong>Ano de Lançamento:</strong> {{ filme?.anoDeLancamento | date: 'yyyy' }}</p>
-      <p><strong>Sinopse:</strong> {{ filme?.sinopse }}</p>
-      <p><strong>Avaliação dos Críticos:</strong> {{ filme?.avaliacaoDosCriticos }}</p>
-      <p><strong>Avaliação dos Usuários:</strong> {{ filme?.avaliacaoDosUsuarios }}%</p>
-      <br>
-      <div class="modal-icons">
-        <cds-icon shape="cloud" class="ml-2"></cds-icon>
-        <cds-icon shape="cloud" class="ml-2"></cds-icon>
-        <cds-icon shape="cloud" class="ml-2"></cds-icon>
-      </div>
-      <button class="btn btn-primary mt-3" (click)="goBack()">Voltar</button>
+  </div>
+  <div class="movie-info">
+    <div class="info-section">
+      <h2>Detalhes</h2>
+      <p><strong>Elenco:</strong> {{ filme.elenco }}</p>
+      <p><strong>Diretor:</strong> {{ filme.diretor }}</p>
+      <p><strong>Duração:</strong> {{ filme.duracao }}</p>
+      <p><strong>Ano de Lançamento:</strong> {{ filme.anoDeLancamento | date: 'yyyy' }}</p>
+      <p><strong>Categoria:</strong> {{ filme.categoria }}</p>
+      <p><strong>Disponibilidade:</strong> {{ filme.tag === 0 ? 'Streaming' : 'Cartaz' }}</p>
+    </div>
+    <div class="info-section">
+      <h2>Sinopse</h2>
+      <p>{{ filme.sinopse }}</p>
+    </div>
+    <div class="info-section">
+      <h2>Avaliações</h2>
+      <p><strong>Avaliação dos Críticos:</strong> {{ filme.avaliacaoDosCriticos }}</p>
+      <p><strong>Avaliação dos Usuários:</strong> {{ filme.avaliacaoDosUsuarios }}%</p>
     </div>
   </div>
 </div>
 
-<div class="clr-row clr-justify-content-center">
-  <div *ngIf="!filme">
-    <clr-spinner clrInline clrSmall aria-label="Carregando..."></clr-spinner>
-    <p>Carregando informações do filme...</p>
-  </div>
+<div *ngIf="!filme" class="loading-container">
+  <clr-spinner clrInline clrSmall aria-label="Carregando..."></clr-spinner>
+  <p>Carregando informações do filme...</p>
 </div>

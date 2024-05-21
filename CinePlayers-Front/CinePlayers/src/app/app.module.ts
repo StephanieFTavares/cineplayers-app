@@ -20,6 +20,7 @@ import { FilmeDetalheComponent } from './features/filme-detalhe/filme-detalhe.co
 import { GerenciarFilmeComponent } from './features/gerenciar-filme/gerenciar-filme.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { GerenciarSalaCinemaComponent } from './features/gerenciar-sala-cinema/gerenciar-sala-cinema.component';
+import { LimitPipe } from './shared/pipes/limit.pipe';
 
 const routes: Routes = [
   { path: '', component: IndexComponent },
@@ -43,6 +44,7 @@ const routes: Routes = [
     FilmeDetalheComponent,
     GerenciarFilmeComponent,
     GerenciarSalaCinemaComponent,
+    LimitPipe,
   ],
   imports: [
     BrowserModule,

@@ -1,15 +1,19 @@
-<div class="clr-row">
-  <div class="clr-col-lg-3 clr-col-12" *ngFor="let filme of filmes" (click)="openModal(filme)">
-    <a href="javascript://" class="card clickable">
-      <div class="card-img">
-        <img
-          src="https://files.meiobit.com/wp-content/uploads/2021/07/Guardians-Of-The-Galaxy.jpg"
-          alt="Example of Image in a Card"
-        />
-      </div>
-    </a>
-    <h4>{{ filme.nome }}</h4>
+<div *ngFor="let categoria of filmesPorCategoria | keyvalue">
+  <h2>{{ categoria.key }}</h2>
+  <div class="clr-row">
+    <div class="clr-col-lg-3 clr-col-12" *ngFor="let filme of categoria.value | slice:0:filmeLimites[categoria.key]" (click)="openModal(filme)">
+      <a href="javascript://" class="card clickable">
+        <div class="card-img">
+          <img
+            [src]="filme.imagem"
+            alt="{{ filme.nome }}"
+          />
+        </div>
+      </a>
+      <h4>{{ filme.nome }}</h4>
+    </div>
   </div>
+  <button class="btn btn-sm" id="btn-ver-mais" (click)="verMais(categoria.key)" *ngIf="categoria.value.length > filmeLimites[categoria.key]">Ver mais</button>
 </div>
 
 <clr-modal [(clrModalOpen)]="modalOpen">
