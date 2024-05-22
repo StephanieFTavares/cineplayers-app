@@ -21,8 +21,25 @@
   margin-bottom: 20px;
 }
 
-h2 {
+.category-header {
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.6rem; /* Aumenta um pouco o tamanho da fonte */
+  font-weight: bold;
+  color: #00aaff; /* Azul escuro do Clarity */
   margin-left: 30px;
+  border-left: 4px solid #0078d4; /* Adiciona uma borda esquerda para destaque */
+  padding-left: 10px; /* Espaçamento entre a borda e o texto */
+  margin-bottom: 20px; /* Espaçamento inferior para separar dos filmes */
+  background: linear-gradient(to right, rgba(240, 244, 248, 0.1), rgba(240, 244, 248, 0.05), rgba(240, 244, 248, 0)); /* Gradiente com mais transparência */
+  padding: 5px 10px; /* Padding adicional para aumentar o destaque */
+  border-radius: 4px; /* Adiciona bordas arredondadas */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Adiciona uma sombra sutil */
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out; /* Efeito de transição */
+}
+
+.category-header:hover {
+  transform: translateY(-2px); /* Eleva o título ligeiramente ao passar o mouse */
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15); /* Aumenta a sombra ao passar o mouse */
 }
 
 #btn-ver-mais {
