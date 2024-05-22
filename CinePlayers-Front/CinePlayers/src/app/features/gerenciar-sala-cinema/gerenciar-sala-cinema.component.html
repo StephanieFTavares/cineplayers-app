@@ -11,7 +11,7 @@
       <clr-dg-cell>
         <div class="action-buttons">
           <button class="btn btn-sm btn-warning" (click)="openEditModal(sala)">Alterar</button>
-          <button class="btn btn-sm btn-danger" (click)="deleteSala(sala.id)">Excluir</button>
+          <button class="btn btn-sm btn-danger" (click)="confirmDelete(sala)">Excluir</button>
         </div>
       </clr-dg-cell>
     </clr-dg-row>
@@ -30,6 +30,18 @@
           <button type="button" class="btn btn-secondary" (click)="closeModal()">Cancelar</button>
         </div>
       </form>
+    </div>
+  </clr-modal>
+
+  <!-- Delete Modal -->
+  <clr-modal [(clrModalOpen)]="isDeleteModalOpen">
+    <h3 class="modal-title">Confirmar Exclusão</h3>
+    <div class="modal-body">
+      Tem certeza de que deseja excluir a sala de cinema "{{ salaToDelete?.nome }}"?
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-danger" (click)="deleteSala()">Excluir</button>
+      <button type="button" class="btn btn-secondary" (click)="cancelDelete()">Cancelar</button>
     </div>
   </clr-modal>
 </div>

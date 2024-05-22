@@ -19,6 +19,18 @@ export class SalaCinemaService {
     );
   }
 
+  createSalaCinema(sala: SalaCinema): Observable<SalaCinema> {
+    return this.http.post<SalaCinema>(this.apiUrl, sala);
+  }
+
+  updateSalaCinema(id: string, sala: SalaCinema): Observable<SalaCinema> {
+    return this.http.put<SalaCinema>(`${this.apiUrl}/${id}`, sala);
+  }
+
+  deleteSalaCinema(id: string): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/${id}`);
+  }
+
   private transformToSalaCinema(data: any): SalaCinema {
     return {
       id: data.id,

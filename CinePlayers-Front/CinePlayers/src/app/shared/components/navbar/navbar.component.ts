@@ -12,7 +12,11 @@ export class NavbarComponent {
   isDarkTheme: boolean = true;
 
   constructor(private searchService: SearchService, private renderer: Renderer2) {
-    this.updateTheme();
+    this.loadTheme();  // Carrega o tema ao inicializar
+  }
+
+  ngOnInit(): void {
+    this.updateTheme();  // Atualiza o tema com base na preferência carregada
   }
 
   onSearch() {
@@ -25,10 +29,17 @@ export class NavbarComponent {
   }
 
   updateTheme() {
-    if (this.isDarkTheme) {
-      this.renderer.setAttribute(document.body, 'cds-theme', 'dark');
+    const theme = this.isDarkTheme ? 'dark' : 'light';
+    this.renderer.setAttribute(document.body, 'cds-theme', theme);
+    localStorage.setItem('theme', theme);
+  }
+
+  loadTheme() {
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+      this.isDarkTheme = savedTheme === 'dark';
     } else {
-      this.renderer.setAttribute(document.body, 'cds-theme', 'light');
+      this.isDarkTheme = true; // Default to dark theme
     }
   }
 }

@@ -13,8 +13,10 @@ export class GerenciarSalaCinemaComponent {
   salas: SalaCinema[] = [];
   filteredSalas: SalaCinema[] = [];
   isModalOpen = false;
+  isDeleteModalOpen = false;
   isEditing = false;
   currentSalaForm: FormGroup;
+  salaToDelete: SalaCinema | null = null;
 
   constructor(
     private salaCinemaService: SalaCinemaService,
@@ -64,21 +66,56 @@ export class GerenciarSalaCinemaComponent {
   }
 
   createSala() {
-    const newSala: SalaCinema = this.currentSalaForm.value;
-    this.salas.push(newSala);
+    if (this.currentSalaForm.valid) {
+      const newSala: SalaCinema = this.currentSalaForm.value;
+      this.salaCinemaService.createSalaCinema(newSala).subscribe(
+        (createdSala) => {
+          this.salas.push(createdSala);
+        }
+      );
+    }
+    setTimeout(() => { window.location.reload(); }, 10);
+    window.location.reload();
     this.closeModal();
   }
 
   updateSala() {
-    const updatedSala: SalaCinema = this.currentSalaForm.value;
-    const index = this.salas.findIndex(s => s.id === updatedSala.id);
-    if (index !== -1) {
-      this.salas[index] = updatedSala;
+    if (this.currentSalaForm.valid) {
+      const updatedSala: SalaCinema = this.currentSalaForm.value;
+      this.salaCinemaService.updateSalaCinema(updatedSala.id, updatedSala).subscribe(
+        (updatedSala) => {
+          const index = this.salas.findIndex(s => s.id === updatedSala.id);
+          if (index !== -1) {
+            this.salas[index] = updatedSala;
+          }
+        }
+      );
+      setTimeout(() => { window.location.reload(); }, 50);
+      this.closeModal();
     }
-    this.closeModal();
   }
 
-  deleteSala(id: string) {
-    this.salas = this.salas.filter(sala => sala.id !== id);
+  confirmDelete(sala: SalaCinema) {
+    this.salaToDelete = sala;
+    this.isDeleteModalOpen = true;
+  }
+
+  deleteSala() {
+    if (this.salaToDelete) {
+      this.salaCinemaService.deleteSalaCinema(this.salaToDelete.id).subscribe(
+        () => {
+          this.salas = this.salas.filter(sala => sala.id !== this.salaToDelete!.id);
+          this.filteredSalas = [...this.salas];
+        }
+      );
+    }
+    setTimeout(() => { window.location.reload(); }, 10);
+    this.isDeleteModalOpen = false;
+    this.salaToDelete = null;
+  }
+
+  cancelDelete() {
+    this.isDeleteModalOpen = false;
+    this.salaToDelete = null;
   }
 }
