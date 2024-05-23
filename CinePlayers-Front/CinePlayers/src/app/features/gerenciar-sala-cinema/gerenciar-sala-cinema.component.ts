@@ -75,7 +75,6 @@ export class GerenciarSalaCinemaComponent {
       );
     }
     setTimeout(() => { window.location.reload(); }, 10);
-    window.location.reload();
     this.closeModal();
   }
 

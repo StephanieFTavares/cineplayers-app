@@ -25,6 +25,10 @@ export class FilmeService {
     );
   }
 
+  createFilme(filme: Filme): Observable<Filme> {
+    return this.http.post<Filme>(this.apiUrl, filme);
+  }
+
   private transformToFilme(data: any): Filme {
     return {
       id: data.id,

@@ -7,16 +7,18 @@
 }
 
 clr-input-container,
-clr-textarea-container {
+clr-textarea-container,
+clr-date-container,
+clr-select-container {
   width: 100%;
   margin-bottom: 1rem;
   display: flex;
   align-items: center;
 }
 
-
-
 clr-input-container input,
-clr-textarea-container textarea {
+clr-textarea-container textarea,
+clr-select-container select,
+clr-date-container input {
   flex: 1; /* O input ocupa o restante do espaço */
 }

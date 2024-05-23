@@ -10,8 +10,8 @@
   </clr-input-container>
 
   <clr-input-container>
-    <label>Ano de Lançamento</label>
-    <input clrInput type="text" formControlName="anoDeLancamento" placeholder="0" />
+    <label>Lançamento</label>
+    <input clrInput type="date" formControlName="anoDeLancamento"/>
   </clr-input-container>
 
   <clr-input-container>
@@ -28,4 +28,23 @@
     <label>Elenco</label>
     <textarea clrTextarea formControlName="elenco" placeholder="Informe os principais atores"></textarea>
   </clr-textarea-container>
+
+  <clr-input-container>
+    <label>Categoria</label>
+    <input clrInput type="text" formControlName="categoria" placeholder="Informe a categoria do filme" />
+  </clr-input-container>
+
+
+  <clr-input-container>
+    <label>Imagem</label>
+    <input clrInput type="text" formControlName="imagem" placeholder="URL da imagem do filme" />
+  </clr-input-container>
+
+  <clr-select-container>
+    <label>Disponivel</label>
+    <select clrSelect formControlName="tag">
+      <option value="0">Streaming</option>
+      <option value="1">Cartaz</option>
+    </select>
+  </clr-select-container>
 </form>

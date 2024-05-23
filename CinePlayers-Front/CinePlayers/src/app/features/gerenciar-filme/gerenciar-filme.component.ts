@@ -57,7 +57,10 @@ export class GerenciarFilmeComponent {
       anoDeLancamento: [filme.anoDeLancamento.getFullYear(), Validators.required],
       duracao: [filme.duracao, Validators.required],
       sinopse: [filme.sinopse, Validators.required],
-      elenco: [filme.elenco, Validators.required]
+      elenco: [filme.elenco, Validators.required],
+      categoria: [filme.categoria, Validators.required],
+      imagem: [filme.imagem],
+      tag: [filme.tag, Validators.required]
     });
   }
 
@@ -99,8 +102,16 @@ export class GerenciarFilmeComponent {
   }
 
   createFilme() {
-    const newFilme = { ...this.currentFilmeForm.value, id: (this.filmes.length + 1).toString() };
-    this.filmes.push(newFilme);
+    if (this.currentFilmeForm.valid) {
+      const newFilme: Filme = this.currentFilmeForm.value;
+      newFilme.tag = Number(newFilme.tag);
+      this.filmeService.createFilme(newFilme).subscribe(
+        (createdFilme) => {
+          this.filmes.push(createdFilme);
+        }
+      );
+    }
+    setTimeout(() => { window.location.reload(); }, 10);
     this.closeModal();
   }
 
