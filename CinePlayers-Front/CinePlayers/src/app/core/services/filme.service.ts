@@ -29,6 +29,14 @@ export class FilmeService {
     return this.http.post<Filme>(this.apiUrl, filme);
   }
 
+  updateFilme(id: string, filme: Filme): Observable<Filme> {
+    return this.http.put<Filme>(`${this.apiUrl}/${id}`, filme);
+  }
+
+  deleteFilme(id: string): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/${id}`);
+  }
+
   private transformToFilme(data: any): Filme {
     return {
       id: data.id,

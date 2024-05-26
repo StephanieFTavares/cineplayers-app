@@ -74,7 +74,7 @@ export class GerenciarSalaCinemaComponent {
         }
       );
     }
-    setTimeout(() => { window.location.reload(); }, 10);
+    setTimeout(() => { window.location.reload(); }, 500);
     this.closeModal();
   }
 
@@ -89,7 +89,7 @@ export class GerenciarSalaCinemaComponent {
           }
         }
       );
-      setTimeout(() => { window.location.reload(); }, 50);
+      setTimeout(() => { window.location.reload(); }, 250);
       this.closeModal();
     }
   }
@@ -108,7 +108,7 @@ export class GerenciarSalaCinemaComponent {
         }
       );
     }
-    setTimeout(() => { window.location.reload(); }, 10);
+    setTimeout(() => { window.location.reload(); }, 150);
     this.isDeleteModalOpen = false;
     this.salaToDelete = null;
   }

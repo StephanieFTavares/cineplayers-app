@@ -13,8 +13,10 @@ export class GerenciarFilmeComponent {
   filmes: Filme[] = [];
   filteredFilmes: Filme[] = [];
   isModalOpen = false;
+  isDeleteModalOpen = false;
   isEditing = false;
   currentFilmeForm!: FormGroup;
+  filmeToDelete: Filme | null = null;
 
   constructor(
     private fb: FormBuilder,
@@ -25,7 +27,7 @@ export class GerenciarFilmeComponent {
   ngOnInit() {
     this.filmeService.getFilmes().subscribe((data: Filme[]) => {
       this.filmes = data;
-      console.log(this.filmes)
+      console.log(this.filmes);
       this.filteredFilmes = data;
     });
 
@@ -52,9 +54,10 @@ export class GerenciarFilmeComponent {
 
   initializeFilmeForm(filme: Filme = this.initializeFilme()): void {
     this.currentFilmeForm = this.fb.group({
+      id: [filme.id],
       nome: [filme.nome, Validators.required],
       diretor: [filme.diretor, Validators.required],
-      anoDeLancamento: [filme.anoDeLancamento.getFullYear(), Validators.required],
+      anoDeLancamento: [this.formatDate(filme.anoDeLancamento), Validators.required],
       duracao: [filme.duracao, Validators.required],
       sinopse: [filme.sinopse, Validators.required],
       elenco: [filme.elenco, Validators.required],
@@ -103,28 +106,84 @@ export class GerenciarFilmeComponent {
 
   createFilme() {
     if (this.currentFilmeForm.valid) {
-      const newFilme: Filme = this.currentFilmeForm.value;
-      newFilme.tag = Number(newFilme.tag);
+      const newFilme: Filme = this.prepareFilmeForSubmission(this.currentFilmeForm.value);
+      console.log('Criando filme:', newFilme);  // Log para debug
       this.filmeService.createFilme(newFilme).subscribe(
         (createdFilme) => {
+          console.log('Filme criado:', createdFilme);  // Log para debug
           this.filmes.push(createdFilme);
+        },
+        (error) => {
+          console.error('Erro ao criar filme:', error);  // Log de erro
         }
       );
+      this.closeModal();
     }
-    setTimeout(() => { window.location.reload(); }, 10);
-    this.closeModal();
+    setTimeout(() => { window.location.reload(); }, 800);
   }
 
   updateFilme() {
-    const updatedFilme = { ...this.currentFilmeForm.value };
-    const index = this.filmes.findIndex(f => f.id === updatedFilme.id);
-    if (index !== -1) {
-      this.filmes[index] = updatedFilme;
+    if (this.currentFilmeForm.valid) {
+      const updatedFilme: Filme = this.prepareFilmeForSubmission(this.currentFilmeForm.value);
+      console.log('Atualizando filme:', updatedFilme);  // Log para debug
+      this.filmeService.updateFilme(updatedFilme.id, updatedFilme).subscribe(
+        (updatedFilme) => {
+          console.log('Filme atualizado:', updatedFilme);  // Log para debug
+          const index = this.filmes.findIndex(s => s.id === updatedFilme.id);
+          if (index !== -1) {
+            this.filmes[index] = updatedFilme;
+          }
+        },
+        (error) => {
+          console.error('Erro ao atualizar filme:', error);  // Log de erro
+        }
+      );
+      this.closeModal();
     }
-    this.closeModal();
+    setTimeout(() => { window.location.reload(); }, 500);
   }
 
-  deleteFilme(id: string) {
-    this.filmes = this.filmes.filter(filme => filme.id !== id);
+  confirmDelete(filme: Filme) {
+    this.filmeToDelete = filme;
+    this.isDeleteModalOpen = true;
+  }
+
+  deleteFilme() {
+    if (this.filmeToDelete) {
+      this.filmeService.deleteFilme(this.filmeToDelete.id).subscribe(
+        () => {
+          this.filmes = this.filmes.filter(filme => filme.id !== this.filmeToDelete!.id);
+          this.filteredFilmes = [...this.filmes];
+        }
+      );
+    }
+    this.isDeleteModalOpen = false;
+    this.filmeToDelete = null;
+    setTimeout(() => { window.location.reload(); }, 500);
+  }
+
+  cancelDelete() {
+    this.isDeleteModalOpen = false;
+    this.filmeToDelete = null;
+  }
+
+  private formatDate(date: Date): string {
+    const d = new Date(date);
+    let month = '' + (d.getMonth() + 1);
+    let day = '' + d.getDate();
+    const year = d.getFullYear();
+
+    if (month.length < 2) month = '0' + month;
+    if (day.length < 2) day = '0' + day;
+
+    return [year, month, day].join('-');
+  }
+
+  private prepareFilmeForSubmission(filme: any): Filme {
+    return {
+      ...filme,
+      anoDeLancamento: new Date(filme.anoDeLancamento),
+      tag: Number(filme.tag)
+    };
   }
 }

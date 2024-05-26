@@ -25,7 +25,7 @@
       <clr-dg-cell>
         <div class="action-buttons">
           <button class="btn btn-sm btn-warning" (click)="openEditModal(filme)">Alterar</button>
-          <button class="btn btn-sm btn-danger" (click)="deleteFilme(filme.id)">Excluir</button>
+          <button class="btn btn-sm btn-danger" (click)="confirmDelete(filme)">Excluir</button>
         </div>
       </clr-dg-cell>
     </clr-dg-row>
@@ -42,6 +42,18 @@
         <button type="submit" class="btn btn-primary">{{ isEditing ? 'Salvar Alterações' : 'Criar Filme' }}</button>
         <button type="button" class="btn btn-secondary" (click)="closeModal()">Cancelar</button>
       </form>
+    </div>
+  </clr-modal>
+
+  <!-- Delete Confirmation Modal -->
+  <clr-modal [(clrModalOpen)]="isDeleteModalOpen">
+    <h3 class="modal-title">Confirmar Exclusão</h3>
+    <div class="modal-body">
+      Tem certeza de que deseja excluir o filme "{{ filmeToDelete?.nome }}"?
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-danger" (click)="deleteFilme()">Excluir</button>
+      <button type="button" class="btn btn-secondary" (click)="cancelDelete()">Cancelar</button>
     </div>
   </clr-modal>
 </div>
