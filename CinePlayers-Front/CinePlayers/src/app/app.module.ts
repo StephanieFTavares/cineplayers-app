@@ -22,14 +22,19 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { GerenciarSalaCinemaComponent } from './features/gerenciar-sala-cinema/gerenciar-sala-cinema.component';
 import { LimitPipe } from './shared/pipes/limit.pipe';
 import { FooterComponent } from './shared/components/footer/footer.component';
+import { LoginComponent } from './features/login/login.component';
+import { AuthService } from './core/services/auth.service';
+import { AuthGuard } from './core/guards/auth.guard';
 
 const routes: Routes = [
-  { path: '', component: IndexComponent },
-  { path: 'index', component: IndexComponent },
-  { path: 'filme', component: FilmeComponent},
-  { path: 'filme/:nome', component: FilmeDetalheComponent},
-  { path: 'gerenciar-filme', component: GerenciarFilmeComponent},
-  { path: 'gerenciar-sala', component: GerenciarSalaCinemaComponent},
+  { path: 'login', component: LoginComponent },
+  { path: '', component: IndexComponent, canActivate: [AuthGuard] },
+  { path: 'index', component: IndexComponent, canActivate: [AuthGuard] },
+  { path: 'filme', component: FilmeComponent, canActivate: [AuthGuard] },
+  { path: 'filme/:nome', component: FilmeDetalheComponent, canActivate: [AuthGuard] },
+  { path: 'gerenciar-filme', component: GerenciarFilmeComponent, canActivate: [AuthGuard] },
+  { path: 'gerenciar-sala', component: GerenciarSalaCinemaComponent, canActivate: [AuthGuard] },
+  { path: '**', redirectTo: '' }
 ];
 
 @NgModule({
@@ -47,6 +52,7 @@ const routes: Routes = [
     GerenciarSalaCinemaComponent,
     LimitPipe,
     FooterComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -58,7 +64,7 @@ const routes: Routes = [
     ReactiveFormsModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

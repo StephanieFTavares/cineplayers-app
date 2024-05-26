@@ -1,0 +1,50 @@
+<div class="login-wrapper">
+  <form class="login" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <div class="login-header">
+    </div>
+    <div class="login-body">
+      <section class="title">
+        <div class="welcome">Bem-vindo ao</div>
+        CinePlayers
+      </section>
+      <div class="login-group">
+        <clr-select-container>
+          <label>Função</label>
+          <select clrSelect formControlName="type">
+            <option value="local">Usuário</option>
+            <option value="admin">Crítico</option>
+          </select>
+        </clr-select-container>
+        <clr-input-container>
+          <label class="clr-sr-only">E-mail</label>
+          <input
+            type="text"
+            autocomplete="username"
+            clrInput
+            formControlName="username"
+            placeholder="Digite o e-mail"
+          />
+        </clr-input-container>
+        <clr-password-container>
+          <label class="clr-sr-only">Password</label>
+          <input
+            type="password"
+            autocomplete="current-password"
+            clrPassword
+            formControlName="password"
+            placeholder="Digite a senha"
+          />
+        </clr-password-container>
+        <clr-checkbox-wrapper>
+          <label>Lembrar-me</label>
+          <input type="checkbox" formControlName="rememberMe" clrCheckbox />
+        </clr-checkbox-wrapper>
+        <div *ngIf="errorMessage" class="error active">{{ errorMessage }}</div>
+        <button type="submit" class="btn btn-primary">Conecte-se</button>
+        <a href="javascript://" class="signup">Inscreva-se</a>
+      </div>
+    </div>
+    <div class="login-footer">
+    </div>
+  </form>
+</div>
