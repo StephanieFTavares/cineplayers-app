@@ -25,6 +25,7 @@ import { FooterComponent } from './shared/components/footer/footer.component';
 import { LoginComponent } from './features/login/login.component';
 import { AuthService } from './core/services/auth.service';
 import { AuthGuard } from './core/guards/auth.guard';
+import { CartazComponent } from './features/cartaz/cartaz.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -34,6 +35,7 @@ const routes: Routes = [
   { path: 'filme/:nome', component: FilmeDetalheComponent, canActivate: [AuthGuard] },
   { path: 'gerenciar-filme', component: GerenciarFilmeComponent, canActivate: [AuthGuard] },
   { path: 'gerenciar-sala', component: GerenciarSalaCinemaComponent, canActivate: [AuthGuard] },
+  { path: 'cartaz', component: CartazComponent, canActivate: [AuthGuard] },
   { path: '**', redirectTo: '' }
 ];
 
@@ -53,6 +55,7 @@ const routes: Routes = [
     LimitPipe,
     FooterComponent,
     LoginComponent,
+    CartazComponent,
   ],
   imports: [
     BrowserModule,

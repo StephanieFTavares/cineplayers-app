@@ -25,6 +25,12 @@ export class FilmeService {
     );
   }
 
+  getFilmesEmCartaz(): Observable<Filme[]> {
+    return this.http.get<Response>(`${this.apiUrl}/EmCartaz`).pipe(
+      map(response => response.data.map(filme => this.transformToFilme(filme)))
+    );
+  }
+
   createFilme(filme: Filme): Observable<Filme> {
     return this.http.post<Filme>(this.apiUrl, filme);
   }
