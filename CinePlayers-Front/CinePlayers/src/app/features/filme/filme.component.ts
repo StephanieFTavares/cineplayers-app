@@ -33,11 +33,11 @@ export class FilmeComponent {
 
   agruparFilmesPorCategoria() {
     this.filmesPorCategoria = this.filmes.reduce<FilmesPorCategoria>((acc, filme) => {
-      if (!acc[filme.categoria]) {
-        acc[filme.categoria] = [];
-        this.filmeLimites[filme.categoria] = 4; // Limite inicial de filmes exibidos por categoria
+      if (!acc[filme.categoria.trim()]) {
+        acc[filme.categoria.trim()] = [];
+        this.filmeLimites[filme.categoria.trim()] = 4; // Limite inicial de filmes exibidos por categoria
       }
-      acc[filme.categoria].push(filme);
+      acc[filme.categoria.trim()].push(filme);
       return acc;
     }, {});
   }

@@ -9,7 +9,7 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class SalaCinemaService {
-  private apiUrl = 'https://localhost:7231/SalaCinema';
+  private apiUrl = 'http://localhost:5220/SalaCinema';
 
   constructor(private http: HttpClient) { }
 

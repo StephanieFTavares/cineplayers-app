@@ -9,7 +9,7 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class FilmeService {
-  private apiUrl = 'https://localhost:7231/Filme';
+  private apiUrl = 'http://localhost:5220/Filme';
 
   constructor(private http: HttpClient) { }
 
