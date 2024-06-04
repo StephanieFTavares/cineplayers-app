@@ -1,4 +1,6 @@
 import { Component, Renderer2 } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/core/services/auth.service';
 import { SearchService } from 'src/app/core/services/search.service';
 
 @Component({
@@ -11,7 +13,11 @@ export class NavbarComponent {
   searchTerm: string = '';
   isDarkTheme: boolean = true;
 
-  constructor(private searchService: SearchService, private renderer: Renderer2) {
+  constructor(
+    private searchService: SearchService,
+    private renderer: Renderer2,
+    private authService: AuthService,
+    private router: Router) {
     this.loadTheme();  // Carrega o tema ao inicializar
   }
 
@@ -41,5 +47,10 @@ export class NavbarComponent {
     } else {
       this.isDarkTheme = true; // Default to dark theme
     }
+  }
+
+  logout() {
+    this.authService.logout();
+    this.router.navigate(['/login']);
   }
 }

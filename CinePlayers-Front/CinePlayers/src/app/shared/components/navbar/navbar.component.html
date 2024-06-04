@@ -38,6 +38,9 @@
         <div clrDropdownItem routerLink="/gerenciar-filme">Gerenciar Filmes</div>
         <div clrDropdownItem routerLink="/gerenciar-sala">Gerenciar Salas</div>
         <div clrDropdownItem>Gerenciar Sessão</div>
+        <div class="dropdown-divider" role="separator" aria-hidden="true"></div>
+        <label class="dropdown-header" aria-hidden="true">Opções</label>
+        <div clrDropdownItem (click)="logout()">Sair</div>
       </clr-dropdown-menu>
     </clr-dropdown>
     <button class="btn btn-secondary" id="btn-theme" (click)="toggleTheme()">
