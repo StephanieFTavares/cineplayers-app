@@ -6,9 +6,9 @@
     <div class="carousel-inner">
       <div class="carousel-item" *ngFor="let movie of featuredMovies">
         <div class="movie-card">
-          <img [src]="movie.image" alt="{{ movie.title }}">
-          <div class="movie-title">{{ movie.title }}</div>
-          <button class="btn btn-sm">SAIBA MAIS</button>
+          <img [src]="movie.imagem" alt="{{ movie.nome }}">
+          <div class="movie-title">{{ movie.nome }}</div>
+          <button class="btn btn-sm" (click)="goToDetails(movie.nome)">SAIBA MAIS</button>
         </div>
       </div>
     </div>
@@ -22,9 +22,9 @@
     <div class="carousel-inner">
       <div class="carousel-item" *ngFor="let movie of mostLikedMovies">
         <div class="movie-card">
-          <img [src]="movie.image" alt="{{ movie.title }}">
-          <div class="movie-title">{{ movie.title }}</div>
-          <button class="btn btn-sm">SAIBA MAIS</button>
+          <img [src]="movie.imagem" alt="{{ movie.nome }}">
+          <div class="movie-title">{{ movie.nome }}</div>
+          <button class="btn btn-sm" (click)="goToDetails(movie.nome)">SAIBA MAIS</button>
         </div>
       </div>
     </div>
@@ -38,9 +38,9 @@
     <div class="carousel-inner">
       <div class="carousel-item" *ngFor="let movie of latestReleases">
         <div class="movie-card">
-          <img [src]="movie.image" alt="{{ movie.title }}">
-          <div class="movie-title">{{ movie.title }}</div>
-          <button class="btn btn-sm">SAIBA MAIS</button>
+          <img [src]="movie.imagem" alt="{{ movie.nome }}">
+          <div class="movie-title">{{ movie.nome }}</div>
+          <button class="btn btn-sm" (click)="goToDetails(movie.nome)">SAIBA MAIS</button>
         </div>
       </div>
     </div>

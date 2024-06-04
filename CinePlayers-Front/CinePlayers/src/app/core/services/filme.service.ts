@@ -31,6 +31,24 @@ export class FilmeService {
     );
   }
 
+  getFilmesDestaque(): Observable<Filme[]> {
+    return this.http.get<Response>(`${this.apiUrl}/Destaque`).pipe(
+      map(response => response.data.map(filme => this.transformToFilme(filme)))
+    );
+  }
+
+  getFilmesMaisCurtidos(): Observable<Filme[]> {
+    return this.http.get<Response>(`${this.apiUrl}/MaisCurtidos`).pipe(
+      map(response => response.data.map(filme => this.transformToFilme(filme)))
+    );
+  }
+
+  getLancamentos(): Observable<Filme[]> {
+    return this.http.get<Response>(`${this.apiUrl}/Lancamentos`).pipe(
+      map(response => response.data.map(filme => this.transformToFilme(filme)))
+    );
+  }
+
   createFilme(filme: Filme): Observable<Filme> {
     return this.http.post<Filme>(this.apiUrl, filme);
   }
